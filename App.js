@@ -1,34 +1,16 @@
 function loadInitialTracks() {
   const tracks = JSON.parse(localStorage.getItem("tracks"))
-  tracks && displayArr("songs",tracks,trackStr);
+  tracks && displayTracks("songs",tracks);
 }
 
-function displayArr(id,arr, func = (el) => el) {
-  const parent = document.getElementById(id)
-  parent.innerHTML = "";
-  for (let i = 0; i < arr.length; i++) {
-    const child = document.createElement("p");
-
-    const icon = document.createElement("img");
-    icon.setAttribute("src",arr[i].album.images[2].url);
-    icon.style.height = "1.5rem";
-    child.appendChild(icon);
-
-    child.appendChild(document.createTextNode(func(arr[i])));
-
-    if(arr[i].preview_url !== null) {
-      audio = document.createElement("audio")
-      audio.setAttribute("controls", true)
-      audio.style.height = "1.5rem";
-      audioSource = document.createElement("source");
-      audioSource.setAttribute("src", arr[i].preview_url)
-      audio.appendChild(audioSource)
-      child.appendChild(audio)
-    }
-
-    parent.appendChild(child);
-  }
-  
+function playAudio(src) {
+  player = document.getElementById("audio-player");
+  player.innerHTML = ""
+  source = document.createElement("source");
+  source.setAttribute("src", src);
+  player.appendChild(source);
+  player.load();
+  player.focus();
 }
 
 function _4_20(track) {
@@ -69,5 +51,5 @@ async function runSearch() {
   }
   tracks.sort((a,b) => (Math.abs(260000 - a.duration_ms) - Math.abs(260000 - b.duration_ms)));
   localStorage.setItem("tracks",JSON.stringify(tracks))
-  displayArr("songs",tracks,trackStr);
+  displayTracks("songs",tracks);
 }

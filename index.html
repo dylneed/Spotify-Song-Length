@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="spotifySignIn.js"></script>
     <script src="spotifyCalls.js"></script>
-    <script src="getSongs.js"></script>
+    <script src="display.js"></script>
     <script src="progressBar.js"></script>
     <script src="App.js"></script>
   </head>
@@ -18,6 +18,7 @@
     <button onclick="runSearch()">Search</button>
     <div id="progress_bars"></div>
     <div id="songs"></div>
+    <audio id="audio-player" controls autoplay></audio>
     <script>loadInitialTracks();</script>
   </body>
 </html>
