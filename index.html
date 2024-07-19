@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="spotifySignIn.js"></script>
+    <script src="spotifyCalls.js"></script>
+    <script src="getSongs.js"></script>
+    <script src="progressBar.js"></script>
+    <script src="App.js"></script>
+  </head>
+  <body>
+    <button onclick="loginWithSpotifyClick()">Log In To Spotify</button>
+    <select id="search-select">
+      <option>Search from Saved Songs</option>
+      <option>Search from Saved Albums</option>
+      <!-- <option>Search from Playlist</option> -->
+    </select>
+    <!-- <input id="playlist-form"></input> -->
+    <button onclick="runSearch()">Search</button>
+    <div id="progress_bars"></div>
+    <div id="songs"></div>
+    <script>loadInitialTracks();</script>
+  </body>
+</html>
