@@ -29,6 +29,7 @@ function trackElement(track) {
 
   const cover = document.createElement("img");
   cover.setAttribute("src",track.album.images[2].url);
+  cover.classList.add("album-cover")
   cover.style.height = "1.5rem";
   p.appendChild(cover);
 
@@ -57,11 +58,17 @@ function displayTracks(id,track) {
 }
 
 function playAudio(src) {
-  player = document.getElementById("audio-player");
+  const player = document.getElementById("audio-player");
+  player.hidden = false;
   player.innerHTML = ""
-  source = document.createElement("source");
+  const source = document.createElement("source");
   source.setAttribute("src", src);
   player.appendChild(source);
   player.load();
   player.focus();
+}
+
+function onAudioEnded() {
+  const player = document.getElementById("audio-player");
+  player.hidden = true
 }

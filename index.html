@@ -10,7 +10,10 @@
     <script src="App.js"></script>
   </head>
   <body>
-    <button onclick="loginWithSpotifyClick()">Log In To Spotify</button>
+    <button onclick="loginWithSpotifyClick()">
+      <img id="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"></img>
+      Log In To Spotify
+    </button>
     <select id="search-select">
       <option>Search from Saved Songs</option>
       <option>Search from Saved Albums</option>
@@ -18,7 +21,7 @@
     <button onclick="runSearch()">Search</button>
     <div id="progress_bars"></div>
     <div id="songs"></div>
-    <audio id="audio-player" controls autoplay></audio>
+    <audio id="audio-player" onended="onAudioEnded()"controls autoplay hidden></audio>
     <script>loadInitialTracks();</script>
   </body>
 </html>

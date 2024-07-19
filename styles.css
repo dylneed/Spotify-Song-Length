@@ -7,9 +7,14 @@ body {
   color:#fcfcfc;
 }
 
-img {
+img.album-cover {
   vertical-align: middle;
   padding-right: 5px;
+}
+
+#spotify-logo {
+  height:1.5rem; 
+  vertical-align:middle;
 }
 
 audio {
