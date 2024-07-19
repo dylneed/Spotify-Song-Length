@@ -10,15 +10,21 @@
     <script src="App.js"></script>
   </head>
   <body>
-    <button onclick="loginWithSpotifyClick()">
-      <img id="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"></img>
-      Log In with Spotify
-    </button>
-    <select id="search-select">
-      <option>Search from Liked Songs</option>
-      <option>Search from Liked Albums</option>
-    </select>
-    <button onclick="runSearch()">Search</button>
+    <div id="buttons">
+      <button onclick="loginWithSpotifyClick()" id='spotify-login' class="header">
+        <img id="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"></img>
+        Log In with Spotify
+      </button>
+      <div class="header">
+        <select id="search-select">
+          <option>Search from Liked Songs</option>
+          <option>Search from Liked Albums</option>
+          <option>Search from Playlist Link</option>
+        </select>
+        <input id="playlist-input" hidden></input>
+      </div>
+      <button onclick="runSearch()" class="header">Search</button>
+    </div>
     <div id="progress_bars"></div>
     <div id="songs"></div>
     <audio id="audio-player" onended="onAudioEnded()"controls autoplay hidden></audio>

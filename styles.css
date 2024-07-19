@@ -19,7 +19,6 @@ img.album-cover {
 
 audio {
   min-width:100%;
-  height:3rem;
   position:fixed;
   bottom:0;
   left:0;
@@ -34,12 +33,17 @@ p {
  font-size: 1rem;
 }
 
-button, select, option {
+#buttons {
+  position: relative;
+}
+
+button, select, option, input {
   background-color:#535353;
   border: none;
   border-radius: 3px;
   color:#fcfcfc;
   font-size:1.5rem;
+  height:5vh;
 }
 
 button:hover,select:hover {
@@ -48,6 +52,21 @@ button:hover,select:hover {
 
 button:active {
   background-color:#1ed760;
+}
+
+.header {
+  display:block;
+  margin:5px;
+}
+
+#playlist-input {
+  font-size:0.8rem;
+  min-width:32rem;
+}
+
+button.play-button {
+  font-size:0.8333rem;
+  height:1.333rem;
 }
 
 .progress-outline {

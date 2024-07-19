@@ -21,7 +21,7 @@ function trackStr(track) {
   ],
   // Zero-pad
   duration = parts.map(s => String(s).padStart(2,'0')).join(':');
-  return `'${track.name}' by ${artists} (${duration})`
+  return `'${track.name}' by ${artists} (${duration}) `
 }
 
 function trackElement(track) {
@@ -33,14 +33,15 @@ function trackElement(track) {
   cover.style.height = "1.5rem";
   p.appendChild(cover);
 
-  // p.appendChild(document.createTextNode(trackStr(track)));
   p.innerHTML += trackStr(track);
 
   if(track.preview_url !== null) {
     const playButton = document.createElement("button");
     playButton.innerHTML = "Play"
     playButton.style.fontSize = "0.8333rem";
+    playButton.height = "0.8333rem";
     playButton.setAttribute("onclick", `playAudio('${track.preview_url}');`)
+    playButton.setAttribute("class", "play-button")
     p.appendChild(playButton)
   }
 

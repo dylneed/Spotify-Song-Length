@@ -2,7 +2,9 @@ const base_address = "https://api.spotify.com/v1/";
 const clientId = "9ab9b607a6cf443c96e60b1af838845d";
 const authorizationEndpoint = "https://accounts.spotify.com/authorize";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
-const scope = 'user-read-private user-read-email user-library-read';
+// const scope = 'user-read-private user-read-email user-library-read playlist-read-private';
+const scope = 'user-library-read playlist-read-private';
+
 
 // On page load, try to fetch auth code from current browser search URL
 const args = new URLSearchParams(window.location.search);
@@ -148,4 +150,19 @@ async function getSavedAlbums(limit=50,progressBar=true) {
   if (progressBar) removeProgressBar(progressId);
 
   return _arr;
+}
+
+async function getPlaylist(id, limit=50,progressBar=true) {
+  let progressId;
+
+  if (progressBar) {
+    progressId = "playlist"
+    createProgressBar(progressId);
+  }
+
+  const _arr = await getData(`playlists/${id}/tracks`, progressId,0,limit);
+
+  if (progressBar) removeProgressBar(progressId);
+
+  return _arr.map((el) => el.track);
 }

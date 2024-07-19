@@ -1,6 +1,15 @@
 function loadInitialTracks() {
   const tracks = JSON.parse(localStorage.getItem("tracks"))
   tracks && displayTracks("songs",tracks);
+
+  const select = document.getElementById("search-select");
+  const input = document.getElementById("playlist-input");
+
+  select.selectedIndex=0;
+
+  addEventListener("input", () => {
+    input.hidden = select.selectedIndex !== 2; 
+  })
 }
 
 function filterTracks(tracks) {
@@ -10,6 +19,13 @@ function filterTracks(tracks) {
 
 function storeTracks(tracks) {
   localStorage.setItem("tracks",JSON.stringify(tracks))
+}
+
+function getId(link) {
+  return link
+          .split("/")
+          .pop()
+          .split("?")[0]
 }
 
 async function runSearch() {
@@ -28,9 +44,15 @@ async function runSearch() {
         tracks.push(..._tracks);
       }
       break;
+    case 2:
+      const input = document.getElementById("playlist-input")
+      tracks = await getPlaylist(getId(input.value));
+      break;
     default:
-      console.error("Error: Invalid dropdown choice")
+      console.error("Error: Invalid dropdown choice");
+      return;
   }
   tracks = filterTracks(tracks)
   displayTracks("songs",tracks);
+  storeTracks(tracks);
 }
