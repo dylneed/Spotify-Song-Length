@@ -68,7 +68,6 @@ async function runSearch() {
       console.error("Error: Invalid dropdown choice")
   }
   tracks.sort((a,b) => (Math.abs(260000 - a.duration_ms) - Math.abs(260000 - b.duration_ms)));
-  console.log(tracks)
   localStorage.setItem("tracks",JSON.stringify(tracks))
   displayArr("songs",tracks,trackStr);
 }

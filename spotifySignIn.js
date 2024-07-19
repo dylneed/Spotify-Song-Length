@@ -1,8 +1,4 @@
 const clientId = "9ab9b607a6cf443c96e60b1af838845d";
-// const redirectUri = 'http://localhost:8080/';        // your redirect URL - must be localhost URL and/or HTTPS
-const redirectUri = window.location.href;
-// console.log(redirectUri);
-// console.log(window.location.href)
 
 const authorizationEndpoint = "https://accounts.spotify.com/authorize";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
@@ -14,8 +10,6 @@ const code = args.get('code');
 
 // If we find a code, we're in a callback, do a token exchange
 if (code) {
-  // getToken(code);
-
   // Remove code from URL so we can refresh correctly.
   const url = new URL(window.location.href);
   url.searchParams.delete("code");
