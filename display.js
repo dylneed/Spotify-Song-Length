@@ -32,11 +32,12 @@ function trackElement(track) {
   cover.style.height = "1.5rem";
   p.appendChild(cover);
 
-  p.appendChild(document.createTextNode(trackStr(track)));
+  // p.appendChild(document.createTextNode(trackStr(track)));
+  p.innerHTML += trackStr(track);
 
   if(track.preview_url !== null) {
     const playButton = document.createElement("button");
-    playButton.appendChild(document.createTextNode("Play"));
+    playButton.innerHTML = "Play"
     playButton.style.fontSize = "0.8333rem";
     playButton.setAttribute("onclick", `playAudio('${track.preview_url}');`)
     p.appendChild(playButton)
@@ -53,4 +54,14 @@ function displayTracks(id,track) {
     parent.appendChild(child);
   }
   
+}
+
+function playAudio(src) {
+  player = document.getElementById("audio-player");
+  player.innerHTML = ""
+  source = document.createElement("source");
+  source.setAttribute("src", src);
+  player.appendChild(source);
+  player.load();
+  player.focus();
 }
