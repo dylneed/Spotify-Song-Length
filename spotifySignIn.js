@@ -23,9 +23,6 @@ if (code) {
   const updatedUrl = url.search ? url.href : url.href.replace('?', '');
   window.history.replaceState({}, document.title, updatedUrl);
 
-  console.log(code);
-  console.log(redirectUri)
-
   getToken(code);
 }
 

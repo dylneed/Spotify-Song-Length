@@ -1,5 +1,6 @@
 function loadInitialTracks() {
-  displayArr("songs",JSON.parse(localStorage.getItem("tracks")),trackStr);
+  const tracks = JSON.parse(localStorage.getItem("tracks"))
+  tracks && displayArr("songs",tracks,trackStr);
 }
 
 function displayArr(id,arr, func = (el) => el) {
