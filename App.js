@@ -13,8 +13,10 @@ function loadInitialTracks() {
 }
 
 function filterTracks(tracks) {
-  let _tracks = tracks.filter((el) => el.duration_ms < 263000 && el.duration_ms > 257000)
-  return _tracks.sort((a,b) => (Math.abs(260000 - a.duration_ms) - Math.abs(260000 - b.duration_ms)));
+  let _tracks = tracks.filter((el) => el.duration_ms < 150000)
+  return _tracks.sort()
+  //let _tracks = tracks.filter((el) => el.duration_ms < 263000 && el.duration_ms > 257000)
+  //return _tracks.sort((a,b) => (Math.abs(260000 - a.duration_ms) - Math.abs(260000 - b.duration_ms)));
 }
 
 function storeTracks(tracks) {
